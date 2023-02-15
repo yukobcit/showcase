@@ -4,7 +4,7 @@
 
 <div class="p-6 m-3 bg-white overflow-hidden shadow sm:rounded-lg">
     <div class="text-xl font-bold break-all">
-        <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
+        <a href="/projects/{{ $project->slug }}">{{ $project->title }}</a>
     </div>
     <div>{!! $project->excerpt!!}</div>
     @if ($showBody)
