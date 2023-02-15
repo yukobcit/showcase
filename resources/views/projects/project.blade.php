@@ -1,8 +1,8 @@
 <x-layout>
     <x-slot name="content">
-        <h2>Project: {{ $project['title'] }}</h2>
+        <a href="/projects" class="pl-10 text-gray-900 dark:text-white hover:underline" aria-current="page"> ← Back to Projects</a>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            Display an individual portfolid project
+            <x-projects.project-card :project="$project" :showBody="true"/>
         </div>
     </x-slot>
 </x-layout>

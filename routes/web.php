@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,15 @@ use App\Http\Controllers\ProjectController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [HomeController::class, 'home']);
+// Route::get('/about', function () {
+//     return view('about');
+// });
+
+Route::get('/about', [HomeController::class, 'about']);
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
+
+Route::get('/categories/{category}', [ProjectController::class, 'listByCategory']);
+Route::get('/categories/{category:slug}', [ProjectController::class, 'listByCategory']);

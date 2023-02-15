@@ -20,6 +20,12 @@
         </style>
     </head>
     <body class="antialiased">
+
+        <x-header />
+
+
         {{ $content }}
+
+        <x-footer />
     </body>
 </html>
