@@ -5,7 +5,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,7 +43,17 @@ Route::get('/login', [SessionController::class, 'create'])->name('login')->middl
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-Route::get('/admin/projects', [ProjectController::class, 'index'])->middleware('admin');
+// Route::get('/admin/projects', [ProjectController::class, 'index'])->middleware('admin');
+
+// Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::get('/admin/projects', [ProjectController::class, 'index']);
+//     Route::get('/admin/projects/{project}', [ProjectController::class, 'show']);
+// });
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/projects', [AdminController::class, 'index']);
+    Route::get('/admin/projects/{project}', [AdminController::class, 'show']);
+});
 
 Route::fallback(function() {
 

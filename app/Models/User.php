@@ -46,4 +46,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function isAdmin() {
+        if ($this->email === 'reena@home.com') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

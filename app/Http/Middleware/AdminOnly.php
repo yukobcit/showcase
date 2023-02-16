@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\User;
 
 class AdminOnly
 {
@@ -15,12 +16,14 @@ class AdminOnly
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
-    {
-        if(auth()->user()?->email !== 'jsolomon11@bcit.ca') {
-            abort(Response::HTTP_FORBIDDEN);
-        }
 
-        return $next($request);
+    public function handle(Request $request, Closure $next)
+{
+    $user = $request->user();
+    if(!$user?->isAdmin()) {
+        abort(Response::HTTP_FORBIDDEN);
     }
+
+    return $next($request);
+}
 }

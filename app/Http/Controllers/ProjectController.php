@@ -21,7 +21,7 @@ class ProjectController extends Controller
     public function listByCategory(Category $category)
     {
         return view('projects.index')
-        ->with('projects', $category->projects, )
+        ->with('projects', $category->projects)
         ->with('categoryName', $category->name);
     }
 }

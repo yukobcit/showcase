@@ -2,7 +2,7 @@
 <x-layout>
     <x-slot name="content">
 
-<div class="min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center">
+<div class="min-h-screen sm:items-center">
         @if (isset($categoryName))
             <a href="/projects" class="pl-10 text-gray-900 dark:text-white hover:underline" aria-current="page"> ← Back to Projects</a>
             <div class="md:text-center">

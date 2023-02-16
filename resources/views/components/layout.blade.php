@@ -35,8 +35,10 @@
                         </p>
                     </div>
                 @endif
-        {{ $content }}
 
+        <div class="wrapper bg-green-100">
+            {{ $content }}
+        </div>
         <x-footer />
     </body>
 </html>

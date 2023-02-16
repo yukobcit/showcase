@@ -1,4 +1,4 @@
-<header class="flex items-center justify-between p-4">
+<header class="flex items-center justify-between p-4 bg-green-300">
   <nav>
     <ul class="flex">
       <li><a href="/" class="font-bold text-lg">Home</a></li>
@@ -13,7 +13,9 @@
     <ul class="flex">
     @auth
       <li>  <span class="font-bold text-lg ml-10"> {{ auth()->user()->name }} </span></li>
-
+        @if (auth()->user()->isAdmin())
+      <li> <a href="/admin/projects" class="font-bold text-lg ml-10">Admin</a><li>
+              @endif
       <li>  <a href="/logout" class="font-bold text-lg ml-10">Logout</a> </li>
     @else
       <li><a href="/login" class="font-bold text-lg ml-10">Log In</a></li>
