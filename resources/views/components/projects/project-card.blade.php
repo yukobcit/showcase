@@ -12,18 +12,32 @@
         <div class="space-y-6 ">{!! $project->body !!}</div>
     @else
     <div class="main grow flex gap-5 y-10">
-        <img class="w-12 justify-center" src="{{url('storage/' . $project->thumb )}}" />
+        @if($project->thumb)
+        <img src="{{url('storage/' . $project->thumb )}}" />
+        @else
+        <img class="w-12 justify-center" src="{{url('storage/images/130x130.png')}}" />
+        @endif
         <div class="content grow col-start-2 row-start-2 col-span-2">{!! $project->excerpt!!}</div>
     </div>
     @endif
+
+    <div class="footer grow flex gap-5 y-10">
+
     @if ($project->category)
-    <a href="/categories/{{ $project->category->slug }}" class="row-start-3 col-span-3 pt-3"><span>Category: {{ $project->category->name }}</span></a>
+    <a href="/projects/categories/{{ $project->category->slug }}" class="row-start-3 col-span-3 pt-3"><span>Category: {{ $project->category->name }}</span></a>
     @endif
-    @if($project->tags)
-    @foreach ($project->tags as $tag)
-    {{ $tag->name}}<br />
-    @endforeach
-    @endif
+
+    <div class="content grow col-start-2 row-start-2 col-span-2">
+        @if($project->tags)
+        @foreach ($project->tags as $tag)
+        <!-- <a href = "/projects/tags/{{$tag->slug}}">{{$tag->name}}"> -->
+        {{ $tag->name}} 
+        @endforeach
+        @endif
+    </div>
+
+</div>
+
 </div>
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -23,13 +24,15 @@ class ProjectController extends Controller
     public function listByCategory(Category $category)
     {
         return view('projects.index')
-        ->with('projects', $category->projects)
+        ->with('projects', $category->projects()->paginate(6)->withQueryString())
+        // ->with('projects', $category->projects)
         ->with('categoryName', $category->name);
     }
 
     public function create() {
         return view('admin.projects.create')
         ->with ('project', null)
+        ->with ('tags', Tag::all())
         ->with('categories', Category::all());
     }
     public function store( Request $request) {
@@ -52,8 +55,11 @@ class ProjectController extends Controller
         $thumb_path = $request->file('thumb')?->storeAs('images', $request->thumb->getClientOriginalName(), 'public');
         $attributes['thumb'] = $thumb_path;
 
-        Project::create($attributes);
+        $project = Project::create($attributes);
 
+
+        $project->tags()->attach($request['tags']);
+ 
 
         session()-> flash('success', 'Project created');
         return redirect('/admin');
@@ -62,6 +68,7 @@ class ProjectController extends Controller
     public function edit(Project $project) {
         return view('admin.projects.create')
         ->with('project', $project)
+        ->with ('tags', Tag::all())
         ->with('categories', Category::all());
     }
 
@@ -85,7 +92,7 @@ class ProjectController extends Controller
 
         $project->update($attributes);
 
-
+        $project->tags()->sync($request['tags']);
 
         return redirect('/admin');
     }

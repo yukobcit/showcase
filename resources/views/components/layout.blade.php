@@ -19,6 +19,8 @@
             }
         </style>
     </head>
+    <!-- {{url('storage/images/130x130.png')}} -->
+
     <body class="antialiased" style="background-image: url('http://localhost/storage/images/mountain.jpg'); background-size: cover;">
 
         <x-header />

@@ -7,7 +7,7 @@ use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\TagController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,8 +29,8 @@ Route::get('/about', [HomeController::class, 'about']);
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/projects/{project:slug}', [ProjectController::class, 'show']);
 
-Route::get('/categories/{category}', [ProjectController::class, 'listByCategory']);
-Route::get('/categories/{category:slug}', [ProjectController::class, 'listByCategory']);
+// Route::get('/categories/{category}', [ProjectController::class, 'listByCategory']);
+// Route::get('/categories/{category:slug}', [ProjectController::class, 'listByCategory']);
 
 Route::get('/projects/categories/{category:slug}',[ProjectController::class, 'listByCategory']);
 Route::get('/projects/tags/{tag:slug}',[ProjectController::class, 'listByTag']);
@@ -43,10 +43,6 @@ Route::get('/login', [SessionController::class, 'create'])->name('login')->middl
 // Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 Route::get('/logout', [SessionController::class, 'destroy'])->middleware('auth');
-
-Route::get('/api/projects', [ProjectController::class, 'getProjectsJSON']);
-Route::get('/api/categories', [CategoryController::class, 'getCategoriesJSON']);
-Route::get('/api/tags', [TagController::class, 'getTagsJSON']);
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/projects/{project}/edit', [ProjectController::class, 'edit']);
@@ -61,6 +57,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::patch('/admin/categories/{category}/edit', [CategoryController::class, 'update']);
     Route::delete('/admin/categories/{category}/delete', [CategoryController::class, 'destroy']);
 
+    Route::get('/admin/tags/{tag}/edit', [TagController::class, 'edit']);
+    Route::patch('/admin/tags/{tag}/edit', [TagController::class, 'update']);
+    Route::delete('/admin/tag/{tag}/delete', [TagController::class, 'destroy']);
+
+
     Route::get('/admin/projects/create', [ProjectController::class, 'create']);
     Route::post('/admin/projects/create', [ProjectController::class, 'store']);
 
@@ -70,9 +71,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/categories/create', [CategoryController::class, 'create']);
     Route::post('/admin/categories/create', [CategoryController::class, 'store']);
 
+    Route::get('/admin/tags/create', [TagController::class, 'create']);
+    Route::post('/admin/tags/create', [TagController::class, 'store']);
+
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/projects/{project}', [AdminController::class, 'show']);
 });
+
+Route::get('/api/projects', [ProjectController::class, 'getProjectsJSON']);
+Route::get('/api/categories', [CategoryController::class, 'getCategoriesJSON']);
+Route::get('/api/tags', [TagController::class, 'getTagsJSON']);
 
 Route::fallback(function() {
 

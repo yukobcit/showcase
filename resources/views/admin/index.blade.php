@@ -38,7 +38,7 @@
             <section class="p-50  m-10 bg-white bg-opacity-50">
                 <div class="flex justify-between items-center mb-4">
                     <h1>Tags</h1>
-                    <button type="submit" class="bg-green-700 text-white rounded py-2 px-4 hover:bg-green-600">Create Category</button>
+                    <a href="/admin/tags/create" class="bg-green-700 text-white rounded py-2 px-4 hover:bg-green-600">Create Tag</a>
                 </div>
                 @foreach ($tags as $tag)
                 <x-admin.tag-row :tag="$tag" />

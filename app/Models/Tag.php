@@ -14,4 +14,14 @@ class Tag extends Model
     {
         return $this->belongsToMany(Project::class, 'projects_tags', 'tags_id','projects_id');
     }
+
+                /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
 }
