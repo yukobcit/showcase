@@ -8,7 +8,7 @@
       @method('PATCH')
       @else
           <h1 class="text-center font-bold text-xl mb-3">Create Project</h1>
-          <form method="POST" action="/admin/users/">
+          <form method="POST" action="/admin/users/create">
       @endif
       @csrf
         <div class="mb-6">

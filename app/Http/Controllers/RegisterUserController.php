@@ -19,9 +19,10 @@ class RegisterUserController extends Controller
         ]);
 
         // User::create($attributes);
-
         $user = User::create($attributes);
-        auth()->login($user);
+        
+        // ignore this step so you don't log in as not admin
+        // auth()->login($user);
         return redirect('/admin');
     }
 

@@ -39,7 +39,7 @@ class TagController extends Controller
 
     public function update(Tag $tag, Request $request) {
         $attributes = request()->validate([
-            'name' => 'required',
+            'name' =>  ['required','unique:tags,name,'.$tag->id],
         ]);
         // Generate the slug from the title
         $attributes['slug'] = Str::slug($attributes['name']);

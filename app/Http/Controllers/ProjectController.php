@@ -29,6 +29,14 @@ class ProjectController extends Controller
         ->with('categoryName', $category->name);
     }
 
+    public function listByTag(Tag $tag)
+    {
+        return view('projects.index')
+        ->with('projects', $tag->projects()->paginate(6)->withQueryString())
+        // ->with('projects', $category->projects)
+        ->with('tagName', $tag->name);
+    }
+
     public function create() {
         return view('admin.projects.create')
         ->with ('project', null)

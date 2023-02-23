@@ -21,10 +21,6 @@ use App\Http\Controllers\TagController;
 
 
 Route::get('/', [HomeController::class, 'home']);
-// Route::get('/about', function () {
-//     return view('about');
-// });
-
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/projects/{project:slug}', [ProjectController::class, 'show']);
@@ -81,6 +77,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::get('/api/projects', [ProjectController::class, 'getProjectsJSON']);
 Route::get('/api/categories', [CategoryController::class, 'getCategoriesJSON']);
 Route::get('/api/tags', [TagController::class, 'getTagsJSON']);
+
 
 Route::fallback(function() {
 

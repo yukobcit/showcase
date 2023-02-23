@@ -9,6 +9,12 @@
                 <h1 class="text-3xl font-bold">{{ $categoryName }}</h1>
             </div>
         @endif
+        @if (isset($tagName))
+        <a href="/projects" class="pl-10 text-gray-900 dark:text-white hover:underline" aria-current="page"> ← Back to Projects</a>
+        <div class="md:text-center">
+            <h1 class="text-3xl font-bold">{{ $tagName }}</h1>
+        </div>
+    @endif
     <div class="relative flex justify-center  py-4 sm:pt-0">
         <div class="m-10 p-15">
             <section class="grid grid-cols-1 md:grid-cols-2 gap-2 p-50">

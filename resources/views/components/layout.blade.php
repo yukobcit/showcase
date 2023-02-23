@@ -19,10 +19,10 @@
             }
         </style>
     </head>
-    <!-- {{url('storage/images/130x130.png')}} -->
 
-    <body class="antialiased" style="background-image: url('http://localhost/storage/images/mountain.jpg'); background-size: cover;">
+    <body class="antialiased" style="background-image: url('http://localhost/mountain.jpg'); background-size: cover;">
 
+   
         <x-header />
             @if (session()->has('success'))
                     <div class="flex justify-center items-center bg-gray-100 w-full py-3">

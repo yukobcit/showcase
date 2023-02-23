@@ -20,18 +20,19 @@
         <div class="content grow col-start-2 row-start-2 col-span-2">{!! $project->excerpt!!}</div>
     </div>
     @endif
+<!-- 
+    <div class="footer grow flex gap-5 y-10"> -->
 
-    <div class="footer grow flex gap-5 y-10">
-
+    <div class="grow col-start-1 row-start-3 col-span-2">
     @if ($project->category)
     <a href="/projects/categories/{{ $project->category->slug }}" class="row-start-3 col-span-3 pt-3"><span>Category: {{ $project->category->name }}</span></a>
     @endif
 
-    <div class="content grow col-start-2 row-start-2 col-span-2">
+    <div class="content grow col-start-2 row-start-3 col-span-2">
         @if($project->tags)
+        Tags: 
         @foreach ($project->tags as $tag)
-        <!-- <a href = "/projects/tags/{{$tag->slug}}">{{$tag->name}}"> -->
-        {{ $tag->name}} 
+        <a href = "/projects/tags/{{$tag->slug}}">{{$tag->name}} </a>
         @endforeach
         @endif
     </div>
