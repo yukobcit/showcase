@@ -19,7 +19,7 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased" style="background-image: url('http://localhost/storage/images/mountain.jpg'); background-size: cover;">
 
         <x-header />
             @if (session()->has('success'))
@@ -36,7 +36,9 @@
                     </div>
                 @endif
 
-        <div class="wrapper bg-green-100">
+                <!-- <img src="{{url('storage/images/mountain.jpg')}}" /> -->
+
+        <div class="wrapper ">
             {{ $content }}
         </div>
         <x-footer />

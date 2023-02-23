@@ -17,10 +17,10 @@
                 @endforeach
             </section>
             @if (count($projects))
-                 <div class="text-xs w-full text-right orange">{{ count($projects) }} projects to peep.</div>
-            @else
-                 <div>Nothing to showcase, yet.</div>
-            @endif
+            <div class="text-xs mt-4 w-full text-right">{{ $projects->links() }}</div>
+        @else
+            <div>Nothing to showcase, yet.</div>
+        @endif
         </div>
     </div>
 </div>

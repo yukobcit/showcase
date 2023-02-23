@@ -1,6 +1,6 @@
 <x-layout>
   <x-slot name="content">
-    <main class="max-w-lg mx-auto">
+    <main class="max-w-lg mx-auto min-h-screen sm:items-center">
       <h1 class="text-center font-bold text-xl mb-3">Login User</h1>
       <form method="POST" action="/login">
       @csrf

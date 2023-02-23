@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./resources/**.*.blade.php", "./resources/**/*.js"],
   theme: {
-      extend: {},
+      extend: {
+        backgroundImage:{
+        //v'main-background':"url('~/images/mountain.jpg')",
+        'main-background': "url('/images/mountain.jpg')",
+        }
+      },
   },
   plugins: [],
 };

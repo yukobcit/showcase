@@ -2,16 +2,23 @@
   <x-slot name="content" >
     <main class="max-w-lg mx-auto min-h-screen sm:items-center">
       <h1 class="text-center font-bold text-xl mb-3">Register User</h1>
-      <form method="POST" action="/register">
+      @if ($user)
+      <h1 class="text-center font-bold text-xl mb-3">Edit User: {{ $user->title }}</h1>
+      <form method="POST" action="/admin/users/{{ $user->id }}/edit">
+      @method('PATCH')
+      @else
+          <h1 class="text-center font-bold text-xl mb-3">Create Project</h1>
+          <form method="POST" action="/admin/users/">
+      @endif
       @csrf
         <div class="mb-6">
           <label for="name" class="block mb-2 uppercase font-bold text-xs text-gray-700">Name</label>
-          <input type="text" name="name" id="name" value="{{ old('name') }}" required class="border border-gray-400 rounded p2 w-full">
+          <input type="text" name="name" id="name" value="{{ old('name') ?? $user?->name }}" required class="border border-gray-400 rounded p2 w-full">
         </div>
 
         <div class="mb-6">
           <label for="email" class="block mb-2 uppercase font-bold text-xs text-gray-700">Email</label>
-          <input type="text" name="email" id="email" required value="{{ old('email') }}" class="border border-gray-400 rounded p2 w-full">
+          <input type="text" name="email" id="email" required value="{{ old('email') ?? $user?->email }}" class="border border-gray-400 rounded p2 w-full">
                                 @error('email')
             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
           @enderror
