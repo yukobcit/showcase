@@ -2,8 +2,8 @@
     <x-slot name="content">
       <main class="max-w-lg mx-auto min-h-screen sm:items-center">
         @if ($tag)
-            <h1 class="text-center font-bold text-xl mb-3">Edit Tag: {{ $tagss->name }}</h1>
-            <form method="POST" action="/admin/tags/{{ $tags->id }}/edit" enctype="multipart/form-data">
+            <h1 class="text-center font-bold text-xl mb-3">Edit Tag: {{ $tag->name }}</h1>
+            <form method="POST" action="/admin/tags/{{ $tag->id }}/edit" enctype="multipart/form-data">
             @method('PATCH')
         @else
             <h1 class="text-center font-bold text-xl mb-3">Create Tag</h1>

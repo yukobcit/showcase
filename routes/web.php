@@ -32,8 +32,8 @@ Route::get('/projects/categories/{category:slug}',[ProjectController::class, 'li
 Route::get('/projects/tags/{tag:slug}',[ProjectController::class, 'listByTag']);
 
 
-// Route::get('/register', [RegisterUserController::class, 'create']);
-// Route::post('/register', [RegisterUserController::class, 'store']);
+Route::get('/register', [RegisterUserController::class, 'create']);
+Route::post('/register', [RegisterUserController::class, 'store']);
 
 Route::get('/login', [SessionController::class, 'create'])->name('login')->middleware('guest');
 // Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
@@ -55,7 +55,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/admin/tags/{tag}/edit', [TagController::class, 'edit']);
     Route::patch('/admin/tags/{tag}/edit', [TagController::class, 'update']);
-    Route::delete('/admin/tag/{tag}/delete', [TagController::class, 'destroy']);
+    Route::delete('/admin/tags/{tag}/delete', [TagController::class, 'destroy']);
 
 
     Route::get('/admin/projects/create', [ProjectController::class, 'create']);

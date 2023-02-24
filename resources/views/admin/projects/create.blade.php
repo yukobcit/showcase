@@ -61,8 +61,14 @@
           <div class="mb-6">
             <label for="image" class="block mb-2 uppercase font-bold text-xs text-gray-700">Image</label>
             <input type="file" name="image" id="image"
+    class="border border-gray-400 rounded p-2 w-full"
+    @if(!old('image') && $project)
+        value="{{ $project->image }}"
+    @endif
+>
+            <!-- <input type="file" name="image" id="image"
               value="{{ old('image') ?? $project?->image }}"
-              class="border border-gray-400 rounded p2 w-full">
+              class="border border-gray-400 rounded p2 w-full"> -->
             @error('image')
               <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror

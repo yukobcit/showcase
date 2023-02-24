@@ -7,15 +7,14 @@
     <a href="/projects/{{ $project->slug }}">{{ $project->title }}</a>
     </div>
     @if ($showBody)
-        <img src="{{url('storage/' . $project->image )}}" />
-
+        <img class="space-y-6 " src="{{url('storage/' . $project->image )}}" />
         <div class="space-y-6 ">{!! $project->body !!}</div>
     @else
     <div class="main grow flex gap-5 y-10">
         @if($project->thumb)
-        <img src="{{url('storage/' . $project->thumb )}}" />
+        <img class="w-100px h-min justify-center" src="{{url('storage/' . $project->thumb )}}" />
         @else
-        <img class="w-12 justify-center" src="{{url('storage/images/130x130.png')}}" />
+        <img class="w-100px h-min justify-center" src="{{url('storage/images/130x130.png')}}" />
         @endif
         <div class="content grow col-start-2 row-start-2 col-span-2">{!! $project->excerpt!!}</div>
     </div>

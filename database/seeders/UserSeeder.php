@@ -17,8 +17,9 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Docker',
-            'slug' => 'docker',
+            'name' => 'yuko',
+            'email' => 'home@home.com',
+            'password' => 'password',
         ]);
 
     }

@@ -33,7 +33,7 @@ class TagController extends Controller
     }
 
     public function edit(Tag $tag) {
-        return view('admin.tag.create')
+        return view('admin.tags.create')
         ->with('tag', $tag);
     }
 

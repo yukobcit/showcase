@@ -93,10 +93,19 @@ class ProjectController extends Controller
     ]);
 
         // Save upload in public storage and set path attributes 
-        $image_path = $request->file('image')?->storeAs('images',$request->image->getClientOriginalName(), 'public');
-        $attributes['image'] = $image_path;
-        $thumb_path = $request->file('thumb')?->storeAs('images', $request->thumb->getClientOriginalName(), 'public');
-        $attributes['thumb'] = $thumb_path;
+
+        if($request->file('image'))
+        {
+            $image_path = $request->file('image')?->storeAs('images',$request->image->getClientOriginalName(), 'public');
+            $attributes['image'] = $image_path;
+        }
+
+        if($request->file('thumb'))
+        {
+            $thumb_path = $request->file('thumb')?->storeAs('images', $request->thumb->getClientOriginalName(), 'public');
+            $attributes['thumb'] = $thumb_path;
+        }
+
 
         $project->update($attributes);
 
