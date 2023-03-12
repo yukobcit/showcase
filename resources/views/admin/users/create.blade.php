@@ -26,7 +26,7 @@
 
         <div class="mb-6">
           <label for="password" class="block mb-2 uppercase font-bold text-xs text-gray-700">Password</label>
-          <input type="text" name="password" id="password" required class="border border-gray-400 rounded p2 w-full">
+          <input type="password" name="password" id="password" required class="border border-gray-400 rounded p2 w-full">
         </div>
         
         <div class="mb-6">
