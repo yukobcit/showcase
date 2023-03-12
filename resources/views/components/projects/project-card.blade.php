@@ -7,14 +7,17 @@
     <a href="/projects/{{ $project->slug }}">{{ $project->title }}</a>
     </div>
     @if ($showBody)
-        <img class="space-y-6 " src="{{url('storage/' . $project->image )}}" />
-        <div class="space-y-6 ">{!! $project->body !!}</div>
+    <img class="max-w-2xl h-min mx-auto" src="{{url('storage/' . $project->image )}}" />
+    <br>
+    <div class="space-y-6 max-w-2xl mx-auto">{!! $project->body !!}</div>
+    
+    
     @else
     <div class="main grow flex gap-5 y-10">
         @if($project->thumb)
-        <img class="w-100px h-min justify-center" src="{{url('storage/' . $project->thumb )}}" />
+        <img class="max-w-xs h-min justify-center" src="{{url('storage/' . $project->thumb )}}" />
         @else
-        <img class="w-100px h-min justify-center" src="{{url('storage/images/130x130.png')}}" />
+        <img class="max-w-xs h-min justify-center" src="{{url('storage/images/130x130.png')}}" />
         @endif
         <div class="content grow col-start-2 row-start-2 col-span-2">{!! $project->excerpt!!}</div>
     </div>
@@ -28,11 +31,12 @@
     @endif
 
     <div class="content grow col-start-2 row-start-3 col-span-2">
-        @if($project->tags)
-        Tags: 
-        @foreach ($project->tags as $tag)
-        <a href = "/projects/tags/{{$tag->slug}}">{{$tag->name}} </a>
-        @endforeach
+        @if($project->tags->isNotEmpty())
+            Tags: 
+            @foreach ($project->tags as $tag)
+                <a href="/projects/tags/{{$tag->slug}}">{{$tag->name}}</a>
+                @if (!$loop->last), @endif
+            @endforeach
         @endif
     </div>
 

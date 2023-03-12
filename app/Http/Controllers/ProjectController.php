@@ -93,6 +93,13 @@ class ProjectController extends Controller
     ]);
 
         // Save upload in public storage and set path attributes 
+        if($request->has('delete_thumbnail')) {
+            $attributes['thumb'] = null;
+        }
+
+        if($request->has('delete_image')) {
+            $attributes['image'] = null;
+        }
 
         if($request->file('image'))
         {

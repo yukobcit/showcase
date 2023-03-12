@@ -17,7 +17,7 @@
     @endif
     <div class="relative flex justify-center  py-4 sm:pt-0">
         <div class="m-10 p-15">
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-2 p-50">
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-2 p-50">
                 @foreach ($projects as $project)
                 <x-projects.project-card :project="$project" />
                 @endforeach

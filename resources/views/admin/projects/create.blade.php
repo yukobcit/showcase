@@ -52,27 +52,33 @@
         <div class="mb-6">
             <label for="thumb" class="block mb-2 uppercase font-bold text-xs text-gray-700">Thumbnail</label>
             <input type="file" name="thumb" id="thumb"
-              value="{{ old('thumb') ?? $project?->thumb }}"
-              class="border border-gray-400 rounded p2 w-full">
+            @if(!old('thumb') && $project) value="{{ old('thumb') ?? $project?->thumb }}"
+              class="border border-gray-400 rounded p2 w-full">              @endif
+              @if($project && $project->thumb)
+              <img class="w-100px h-min justify-center" src="{{url('storage/' . $project->thumb )}}" />
+              <input type="checkbox" name="delete_thumbnail" id="delete_thumbnail">
+                <label for="delete_thumbnail">Delete thumbnail</label>
+              @endif
             @error('thumb')
               <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
           </div>
-          <div class="mb-6">
+
+        <div class="mb-6">
             <label for="image" class="block mb-2 uppercase font-bold text-xs text-gray-700">Image</label>
-            <input type="file" name="image" id="image"
-    class="border border-gray-400 rounded p-2 w-full"
-    @if(!old('image') && $project)
-        value="{{ $project->image }}"
-    @endif
->
-            <!-- <input type="file" name="image" id="image"
-              value="{{ old('image') ?? $project?->image }}"
-              class="border border-gray-400 rounded p2 w-full"> -->
+            <input type="file" name="image" id="image" class="border border-gray-400 rounded p-2 w-full"
+            @if(!old('image') && $project)
+                value="{{ $project->image }}">
+                @if($project->image)
+                <img class="space-y-6 " src="{{url('storage/' . $project->image )}}" />
+                <input type="checkbox" name="delete_image" id="delete_image">
+                <label for="delete_image">Delete image</label>  
+                @endif
+            @endif
             @error('image')
-              <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror
-          </div>
+        </div>
 
           <select name="category_id" id="category_id">
             <option value="" selected disabled>Select a Category</option>
